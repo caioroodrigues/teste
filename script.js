@@ -11,17 +11,24 @@ yesBtn.addEventListener("click", () => {
   `;
 });
 
-noBtn.addEventListener("mouseenter", () => {
-  const dialogRect = dialogBox.getBoundingClientRect();
-  const btnRect = noBtn.getBoundingClientRect();
-
+// Função para mover o botão "Não" dentro da caixinha
+function moveNoButton() {
   const maxX = dialogBox.clientWidth - noBtn.offsetWidth;
-  const maxY = dialogBox.clientHeight - noBtn.offsetHeight - 50; // margem do título
+  const maxY = dialogBox.clientHeight - noBtn.offsetHeight - 60; // desconta título
 
   const newX = Math.floor(Math.random() * maxX);
-  const newY = Math.floor(Math.random() * maxY) + 80; // desce pra não sobrepor o título
+  const newY = Math.floor(Math.random() * maxY) + 80;
 
   noBtn.style.position = "absolute";
   noBtn.style.left = `${newX}px`;
   noBtn.style.top = `${newY}px`;
+}
+
+// Desktop: mouse passa por cima
+noBtn.addEventListener("mouseenter", moveNoButton);
+
+// Mobile: toca no botão
+noBtn.addEventListener("touchstart", (e) => {
+  e.preventDefault(); // evita clicar acidentalmente
+  moveNoButton();
 });
