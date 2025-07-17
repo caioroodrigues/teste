@@ -1,0 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
+}
+
+.background {
+  background: linear-gradient(120deg, #f6d365, #fda085);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: -1;
+  animation: pulse 8s infinite alternate;
+}
+
+@keyframes pulse {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(30deg); }
+}
+
+.dialog-box {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  padding: 30px;
+  max-width: 90%;
+  width: 350px;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.dialog-box h1 {
+  font-size: 1.8em;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.buttons {
+  position: relative; /* necessário pro botão "Não" respeitar o container */
+  height: 150px; /* espaço para o botão se mover */
+}
+
+button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#yesBtn {
+  background-color: #4CAF50;
+  color: white;
+  position: relative;
+  z-index: 1;
+}
+
+#yesBtn:hover {
+  background-color: #45a049;
+}
+
+#noBtn {
+  background-color: #f44336;
+  color: white;
+  position: absolute; /* permite mover o botão dentro do .buttons */
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+#noBtn:hover {
+  background-color: #d32f2f;
+}
+
+@media (max-width: 480px) {
+  .dialog-box {
+    width: 90%;
+  }
+
+  .dialog-box h1 {
+    font-size: 1.5em;
+  }
+
+  button {
+    font-size: 0.95em;
+    padding: 10px 20px;
+  }
+
+  .buttons {
+    height: 130px;
+  }
+}
